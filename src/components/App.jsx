@@ -1,15 +1,11 @@
-import React, { Component } from "react";
-import Header from "./Header";
-import SpreadSheet from "./SpreadSheet";
+import React from "react";
+import Header from "./header/Header";
+import SpreadSheet from "./table/SpreadSheet";
 
-class App extends Component {
-    render() {
-        return (
-            <div>
-                <Header/> <br/><SpreadSheet/>
-            </div>
-        );
-    }
-}
+const App = () => (
+    <div>
+        <Header /> <br /><SpreadSheet />
+    </div>
+);
 
 export default App;

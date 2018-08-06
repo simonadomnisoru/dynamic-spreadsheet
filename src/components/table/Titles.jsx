@@ -1,6 +1,6 @@
 import React from "react";
 import { FormControl } from "react-bootstrap";
-import api from "../api/spreadsheet";
+import api from "../../api/spreadsheet";
 
 class Titles extends React.Component {
     constructor(props) {
@@ -8,10 +8,8 @@ class Titles extends React.Component {
         this._names = new Map();
     }
     handleChange = () => {
-        let names = Array.from(this._names.values())
-            .filter(node => node !== null && node.value !== "")
-            .map((node, index) => ({ index, value: node.value }));
-        //api.editColumn({ name: this._name.value });
+        // Todo refactor, save value to store
+        api.editColumn({ name: this._names });
     };
     render() {
         return (

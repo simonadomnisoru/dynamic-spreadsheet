@@ -1,16 +1,30 @@
 import store from "../state/store";
 import actions from "../state/actions";
+import ColumnType from "../helpers/ColumnType";
 
-const addColumn = function (data) {
+let processMultipleOptions = (data) => {
+	let opts = Array.from(data.values())
+		.filter(node => node !== null && node.value !== "")
+		.map(node => node.value)
+		.unshift("");
+	return opts;
+}
+
+
+const addColumn = (data, opts) => {
+	if (data.type === ColumnType.select) {
+		data.opts = processMultipleOptions(opts);
+	}
 	store.dispatch({ type: actions.addColumn, data });
 };
 
-const addRows = function (data) {
-	store.dispatch({ type: actions.addRows});
+const addRows = () => {
+	store.dispatch({ type: actions.addRows });
 };
 
-const editColumn = function (data) {
-	store.dispatch({ type: actions.editColumn});
+const editColumn = (data) => {
+	console.log(data);
+	//store.dispatch({ type: actions.editColumn });
 };
 
 const api = {

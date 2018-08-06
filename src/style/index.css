@@ -1,3 +1,7 @@
 .spreadsheet-table {
 	width: auto
 }
+
+.required {
+	border-color: #a94442;
+}
