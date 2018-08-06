@@ -23,8 +23,7 @@ const addRows = () => {
 };
 
 const editColumn = (data) => {
-	console.log(data);
-	//store.dispatch({ type: actions.editColumn });
+	store.dispatch({ type: actions.editColumn, data });
 };
 
 const api = {

@@ -9,7 +9,6 @@ class SpreadSheet extends Component {
     componentDidMount() {
         store.subscribe(() =>
             this.setState({
-                columnsNumber: store.getState().columnsNumber,
                 rowsNumber: store.getState().rowsNumber,
                 columns: store.getState().columns
             })

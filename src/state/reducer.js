@@ -5,8 +5,7 @@ function reducerSpreadsheet(state, action) {
 		case actionTypes.addColumn:
 			return {
 				...state,
-				columnsNumber: state.columnsNumber + 1,
-				rowsNumber: state.columnsNumber === 1 ? 10 : state.rowsNumber,
+				rowsNumber: state.columns.length === 1 ? 10 : state.rowsNumber,
 				columns: [...state.columns, action.data]
 			}
 		case actionTypes.addRows:
@@ -15,10 +14,11 @@ function reducerSpreadsheet(state, action) {
 				rowsNumber: state.rowsNumber + 10
 			}
 		case actionTypes.editColumn:
-			/*return {
-				...state,
-				rowsNumber: state.rowsNumber + 10
-			}*/
+			console.log(action.data);
+			console.log(state.columns);
+			return {
+				...state
+			}
 		default:
 			return state
 	}
