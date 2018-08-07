@@ -12,7 +12,8 @@ class ColumnCreate extends React.Component {
             show: false,
             showOptions: false
         };
-        this._options = new Map();
+        this._ref = {};
+        this._ref.options = new Map();
     }
 
     handleShow = value => {
@@ -20,11 +21,11 @@ class ColumnCreate extends React.Component {
     };
 
     handleAdd = () => {
-        api.addColumn({ name: this._name.value, type: this._type.value, required: this._required.checked }, this._options);
+        api.addColumn({ name: this._ref.name.value, type: this._ref.type.value, required: this._ref.required.checked }, this._ref.options);
         this.setState({ show: false, showOptions: false });
     };
     handleColumnType = () => {
-        this.setState({ showOptions: this._type.value === ColumnType.select });
+        this.setState({ showOptions: this._ref.type.value === ColumnType.select });
     };
 
     render() {
@@ -34,10 +35,10 @@ class ColumnCreate extends React.Component {
                 <Modal show={this.state.show} onHide={() => this.handleShow(false)}>
                     <Modal.Body>
                         <FormGroup>
-                            <FormControl type="text" placeholder="Enter column name" inputRef={el => (this._name = el)} />
-                            <Checkbox inputRef={el => (this._required = el)}>Is required</Checkbox>
-                            <OptionsDropDown handleColumnType={this.handleColumnType} handleRef={el => (this._type = el)} />
-                            <OptionsSelect handleRef={(el, index) => this._options.set(index, el)} show={this.state.showOptions}/>
+                            <FormControl type="text" placeholder="Enter column name" inputRef={el => (this._ref.name = el)} />
+                            <Checkbox inputRef={el => (this._ref.required = el)}>Is required</Checkbox>
+                            <OptionsDropDown handleColumnType={this.handleColumnType} handleRef={el => (this._ref.type = el)} />
+                            <OptionsSelect handleRef={(el, index) => this._ref.options.set(index, el)} show={this.state.showOptions}/>
                         </FormGroup>
                     </Modal.Body>
                     <Modal.Footer>

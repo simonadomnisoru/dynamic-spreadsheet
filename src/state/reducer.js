@@ -1,6 +1,6 @@
 import actionTypes from "./actions";
 
-function reducerSpreadsheet(state, action) {
+let reducerSpreadsheet = (state, action) => {
 	switch (action.type) {
 		case actionTypes.addColumn:
 			return {
@@ -9,13 +9,15 @@ function reducerSpreadsheet(state, action) {
 				columns: [...state.columns, action.data]
 			}
 		case actionTypes.addRows:
+			let rowsNumber = state.columns.length === 1 ? state.rowsNumber : state.rowsNumber + 10
 			return {
 				...state,
-				rowsNumber: state.rowsNumber + 10
+				rowsNumber: rowsNumber
 			}
 		case actionTypes.editColumn:
 			let newColumns = [...state.columns];
-			newColumns[action.data.index] = { ...newColumns[action.data.index],
+			newColumns[action.data.index] = {
+				...newColumns[action.data.index],
 				name: action.data.name
 			}
 			return {

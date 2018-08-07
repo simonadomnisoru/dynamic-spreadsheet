@@ -19,7 +19,7 @@ class SpreadSheet extends Component {
         this.setState({ error: error });
     }
     render() {
-        if (this.state)
+        if (this.state && this.state.columns.length !== 1)
             return (
                 <div>
                     {this.state.error ? <Alert bsStyle="danger">
