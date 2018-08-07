@@ -14,10 +14,13 @@ function reducerSpreadsheet(state, action) {
 				rowsNumber: state.rowsNumber + 10
 			}
 		case actionTypes.editColumn:
-			console.log(action.data);
-			console.log(state.columns);
+			let newColumns = [...state.columns];
+			newColumns[action.data.index] = { ...newColumns[action.data.index],
+				name: action.data.name
+			}
 			return {
-				...state
+				...state,
+				columns: newColumns
 			}
 		default:
 			return state
