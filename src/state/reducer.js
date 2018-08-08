@@ -1,3 +1,8 @@
+/*
+	Reducer for the redux store. It processes the data based on the action that was dispatched.
+	It saves and update the redux state.
+*/
+
 import actionTypes from "./actions";
 
 const editColumn = (newColumns, data) => {

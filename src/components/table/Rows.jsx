@@ -10,24 +10,29 @@ const Rows = ({ rowsNumber, columns, handleError }) => {
                 return (
                     <tr key={`row_${indexRow}`}>
                         {columns.map((dataColumn, indexColumn) => {
-                            return <td key={`column_${indexColumn}`}>
-                                <Row indexRow={indexRow}
-                                    dataColumn={dataColumn}
-                                    indexColumn={indexColumn}
-                                    handleError={handleError}
-                                    handleBlur={e => this.handleBlur(e, dataColumn)} />
-                            </td>
+                            return (
+                                <td key={`column_${indexColumn}`}>
+                                    <Row
+                                        indexRow={indexRow}
+                                        dataColumn={dataColumn}
+                                        indexColumn={indexColumn}
+                                        handleError={handleError}
+                                        handleBlur={e => this.handleBlur(e, dataColumn)}
+                                    />
+                                </td>
+                            );
                         })}
                     </tr>
                 );
             })}
         </tbody>
     );
-}
+};
 
 Rows.propTypes = {
     rowsNumber: PropTypes.number.isRequired,
-    columns: PropTypes.array.isRequired
+    columns: PropTypes.array.isRequired,
+    handleError: PropTypes.func
 };
 
 export default Rows;

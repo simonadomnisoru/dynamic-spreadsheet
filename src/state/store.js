@@ -5,7 +5,9 @@ import reducer from "./reducer";
 
 const initialState = {
 	rowsNumber: 1,
-	columns: [{name:"#"}],
+	columns: [{
+		name: "#"
+	}],
 	rows: []
 }
 

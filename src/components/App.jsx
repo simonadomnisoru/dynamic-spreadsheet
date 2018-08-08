@@ -4,7 +4,8 @@ import SpreadSheet from "./table/SpreadSheet";
 
 const App = () => (
     <div>
-        <Header /> <br /><SpreadSheet />
+        <Header /> <br />
+        <SpreadSheet />
     </div>
 );
 

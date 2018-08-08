@@ -1,3 +1,7 @@
+/*
+	Validation for the row values
+*/
+
 import ColumnType from "../helpers/ColumnType";
 
 const validateType = (type, data) => {

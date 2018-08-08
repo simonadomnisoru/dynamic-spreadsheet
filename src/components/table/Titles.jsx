@@ -11,16 +11,17 @@ const Titles = ({ columns }) => {
                     return (
                         <th key={`title_${index}`}>
                             {index !== 0 ? (
-                                <FormControl type="text" defaultValue={data.name}
-                                    onChange={el => api.editColumn({ name: el.target.value, index })} />
-                            ) : data.name}
+                                <FormControl type="text" defaultValue={data.name} onChange={el => api.editColumn({ name: el.target.value, index })} />
+                            ) : (
+                                data.name
+                            )}
                         </th>
                     );
                 })}
             </tr>
         </thead>
     );
-}
+};
 
 Titles.propTypes = {
     columns: PropTypes.array.isRequired

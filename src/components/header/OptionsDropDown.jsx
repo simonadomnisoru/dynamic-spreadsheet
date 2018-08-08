@@ -1,5 +1,6 @@
 import React from "react";
 import { FormControl } from "react-bootstrap";
+import PropTypes from "prop-types";
 import ColumnType from "../../helpers/ColumnType";
 
 const OptionsDropDown = ({ handleRef, handleColumnType }) => (
@@ -10,5 +11,10 @@ const OptionsDropDown = ({ handleRef, handleColumnType }) => (
         <option value={ColumnType.select}>Multiple options</option>
     </FormControl>
 );
+
+OptionsDropDown.propTypes = {
+    handleRef: PropTypes.func.isRequired,
+    handleColumnType: PropTypes.func.isRequired
+};
 
 export default OptionsDropDown;

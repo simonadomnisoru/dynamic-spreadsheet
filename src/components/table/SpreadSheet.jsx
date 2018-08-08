@@ -15,16 +15,18 @@ class SpreadSheet extends Component {
         );
     }
 
-    handleError = (error) => {
+    handleError = error => {
         this.setState({ error: error });
-    }
+    };
     render() {
         if (this.state && this.state.columns.length !== 1)
             return (
                 <div>
-                    {this.state.error ? <Alert bsStyle="danger">
-                        <strong>{this.state.error}</strong>
-                    </Alert> : null}
+                    {this.state.error ? (
+                        <Alert bsStyle="danger">
+                            <strong>{this.state.error}</strong>
+                        </Alert>
+                    ) : null}
                     <Table striped bordered condensed hover className="spreadsheet-table">
                         <Titles columns={this.state.columns} />
                         <Rows columns={this.state.columns} rowsNumber={this.state.rowsNumber} handleError={error => this.handleError(error)} />

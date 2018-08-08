@@ -1,5 +1,6 @@
 import React from "react";
 import { FormControl } from "react-bootstrap";
+import PropTypes from "prop-types";
 import ColumnType from "../../helpers/ColumnType";
 import Validation from "../../helpers/ValidateRow";
 import OptionsDropDown from "./OptionsDropDown";
@@ -9,9 +10,9 @@ class Row extends React.PureComponent {
         super(props);
         this.state = {
             className: null
-        }
+        };
     }
-    handleBlur = (value) => {
+    handleBlur = value => {
         let validate = Validation.validate(value, this.props.dataColumn);
         api.editRow({ value, indexColumn: this.props.indexColumn, indexRow: this.props.indexRow });
         this.props.handleError(validate.errorMessage);
@@ -20,13 +21,20 @@ class Row extends React.PureComponent {
 
     render() {
         if (this.props.indexColumn === 0) {
-            return <span> {this.props.indexRow + 1}</span>
+            return <span> {this.props.indexRow + 1}</span>;
         }
         if (this.props.dataColumn.type === ColumnType.select) {
-            return <OptionsDropDown options={this.props.dataColumn.opts} className={this.state.className} handleBlur={(e) => this.handleBlur(e.target.value)} />
+            return <OptionsDropDown options={this.props.dataColumn.opts} className={this.state.className} handleBlur={e => this.handleBlur(e.target.value)} />;
         }
-        return <FormControl type={this.props.dataColumn.type} onBlur={(e) => this.handleBlur(e.target.value)} className={this.state.className} />
+        return <FormControl type={this.props.dataColumn.type} onBlur={e => this.handleBlur(e.target.value)} className={this.state.className} />;
     }
 }
+
+Row.propTypes = {
+    dataColumn: PropTypes.object.isRequired,
+    indexColumn: PropTypes.number.isRequired,
+    indexRow: PropTypes.number.isRequired,
+    handleError: PropTypes.func.isRequired
+};
 
 export default Row;
