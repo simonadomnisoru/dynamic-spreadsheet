@@ -5,12 +5,12 @@ const Rows = ({ rowsNumber, columns, handleError }) => {
     let rows = [...Array(rowsNumber)];
     return (
         <tbody>
-            {rows.map((dataRow, index) => {
+            {rows.map((dataRow, indexRow) => {
                 return (
-                    <tr key={`row_${index}`}>
+                    <tr key={`row_${indexRow}`}>
                         {columns.map((dataColumn, indexColumn) => {
                             return <td key={`column_${indexColumn}`}>
-                                <Row index={index}
+                                <Row indexRow={indexRow}
                                     dataColumn={dataColumn}
                                     indexColumn={indexColumn}
                                     handleError={handleError}

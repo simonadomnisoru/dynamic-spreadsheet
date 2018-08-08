@@ -1,7 +1,8 @@
 const actions = {
 	addColumn: "addColumn",
 	addRows: "addRows",
-	editColumn: "editColumn"
+	editColumn: "editColumn",
+	editRow: "editRow"
 };
 
 export default actions;

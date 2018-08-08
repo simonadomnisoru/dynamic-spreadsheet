@@ -5,7 +5,7 @@ import api from "../../api/spreadsheet";
 import OptionsSelect from "./OptionsSelect";
 import OptionsDropDown from "./OptionsDropDown";
 
-class ColumnCreate extends React.Component {
+class ColumnCreate extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,7 +38,7 @@ class ColumnCreate extends React.Component {
                             <FormControl type="text" placeholder="Enter column name" inputRef={el => (this._ref.name = el)} />
                             <Checkbox inputRef={el => (this._ref.required = el)}>Is required</Checkbox>
                             <OptionsDropDown handleColumnType={this.handleColumnType} handleRef={el => (this._ref.type = el)} />
-                            <OptionsSelect handleRef={(el, index) => this._ref.options.set(index, el)} show={this.state.showOptions}/>
+                            <OptionsSelect handleRef={(el, index) => this._ref.options.set(index, el)} show={this.state.showOptions} />
                         </FormGroup>
                     </Modal.Body>
                     <Modal.Footer>

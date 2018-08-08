@@ -24,6 +24,11 @@ let reducerSpreadsheet = (state, action) => {
 				...state,
 				columns: newColumns
 			}
+		case actionTypes.editRow:
+			console.log(action.data);
+			return {
+				...state
+			}
 		default:
 			return state
 	}

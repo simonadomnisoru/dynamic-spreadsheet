@@ -26,10 +26,16 @@ const editColumn = (data) => {
 	store.dispatch({ type: actions.editColumn, data });
 };
 
+const editRow = (data) => {
+	store.dispatch({ type: actions.editRow, data });
+};
+
+
 const api = {
 	addColumn: addColumn,
 	addRows: addRows,
-	editColumn: editColumn
+	editColumn: editColumn,
+	editRow: editRow
 };
 
 export default api;

@@ -14,7 +14,8 @@ A dynamic spreadsheet created with React.js.
    - [Redux](https://redux.js.org/) used to manage the state of the project and to simulate the backend
 
 ## Future enhancements
-   - Accurete error for the rows
+   - save rows in redux
+   - Accurete errors for the rows
    - Unit tests
    - CI and Linters
    - Persist the data
