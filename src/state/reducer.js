@@ -1,5 +1,28 @@
 import actionTypes from "./actions";
 
+const editColumn = (newColumns, data) => {
+	newColumns[data.index] = {
+		...newColumns[data.index],
+		name: data.name
+	}
+	return newColumns;
+}
+
+const editRow = (newRows, data) => {
+	let existRowIndex = newRows.findIndex(obj => {
+		return obj.indexColumn === data.indexColumn && obj.indexRow === data.indexRow
+	});
+	if (existRowIndex === -1) {
+		newRows.push(data);
+	} else {
+		newRows[existRowIndex] = {
+			...newRows[existRowIndex],
+			value: data.value
+		}
+	}
+	return newRows;
+}
+
 let reducerSpreadsheet = (state, action) => {
 	switch (action.type) {
 		case actionTypes.addColumn:
@@ -9,25 +32,19 @@ let reducerSpreadsheet = (state, action) => {
 				columns: [...state.columns, action.data]
 			}
 		case actionTypes.addRows:
-			let rowsNumber = state.columns.length === 1 ? state.rowsNumber : state.rowsNumber + 10
 			return {
 				...state,
-				rowsNumber: rowsNumber
+				rowsNumber: state.columns.length === 1 ? state.rowsNumber : state.rowsNumber + 10
 			}
 		case actionTypes.editColumn:
-			let newColumns = [...state.columns];
-			newColumns[action.data.index] = {
-				...newColumns[action.data.index],
-				name: action.data.name
-			}
 			return {
 				...state,
-				columns: newColumns
+				columns: editColumn([...state.columns], action.data)
 			}
 		case actionTypes.editRow:
-			console.log(action.data);
 			return {
-				...state
+				...state,
+				rows: editRow([...state.rows], action.data)
 			}
 		default:
 			return state
