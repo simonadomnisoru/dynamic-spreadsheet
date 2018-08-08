@@ -6,7 +6,7 @@ import reducer from "./reducer";
 const initialState = {
 	rowsNumber: 1,
 	columns: [{name:"#"}],
-	rows: {}
+	rows: []
 }
 
 const store = createStore(reducer, initialState)
