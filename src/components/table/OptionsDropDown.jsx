@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FormControl } from "react-bootstrap";
 
 const OptionsDropDown = ({ handleBlur, options, className }) => (
@@ -12,5 +13,10 @@ const OptionsDropDown = ({ handleBlur, options, className }) => (
         })}
     </FormControl>
 );
+
+OptionsDropDown.propTypes = {
+    options: PropTypes.array.isRequired,
+    className: PropTypes.string,
+};
 
 export default OptionsDropDown;

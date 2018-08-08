@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FormControl } from "react-bootstrap";
 import api from "../../api/spreadsheet";
 
@@ -20,4 +21,9 @@ const Titles = ({ columns }) => {
         </thead>
     );
 }
+
+Titles.propTypes = {
+    columns: PropTypes.array.isRequired
+};
+
 export default Titles;

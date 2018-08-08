@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Row from "./Row";
 
 const Rows = ({ rowsNumber, columns, handleError }) => {
@@ -23,5 +24,10 @@ const Rows = ({ rowsNumber, columns, handleError }) => {
         </tbody>
     );
 }
+
+Rows.propTypes = {
+    rowsNumber: PropTypes.number.isRequired,
+    columns: PropTypes.array.isRequired
+};
 
 export default Rows;
